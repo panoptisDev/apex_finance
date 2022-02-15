@@ -62,46 +62,47 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
     />,
   );
   return (
-    <div className="col-md-6 m-b-sm">
-      <ul className="list-group st-pricing-table">
-        <li className="list-group-item">
-          <h3 className="st-pricing-table-header">{`${action} ${toTokenName}`}</h3>
-        </li>
-        <li className="list-group-item">
-          <table className="table" style={{marginBottom: "0px !important"}}>
-            <thead className="st-pricing-table-header">
-              <tr>
-                <th scope="col">Transfer</th>
-                <th scope="col">Status</th>
-                <th scope="col">Purchase</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{fromTokenName} <FontAwesomeIcon icon={faArrowRight} /> {toTokenName}</td>
-                <td>{priceDesc}</td>
-                <td>
-                  {approveStatus !== ApprovalState.APPROVED && !disabled ? (
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    disabled={approveStatus === ApprovalState.PENDING || approveStatus === ApprovalState.UNKNOWN}
-                    onClick={() => catchError(approve(), `Unable to approve ${fromTokenName}`)}
-                  >
-                    {`Approve ${fromTokenName}`}
-                  </Button>
-                ) : (
-                  <Button color="primary" variant="contained" onClick={onPresent} disabled={disabled}>
-                    {disabledDescription || action}
-                  </Button>
-                )}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </li>
-      </ul>
-    </div>
+    <Card>
+      <CardContent>
+        <StyledCardContentInner>
+          <StyledCardTitle>{`${action} ${toTokenName}`}</StyledCardTitle>
+          <StyledExchanger>
+            <StyledToken>
+              <StyledCardIcon>
+                <TokenSymbol symbol={fromToken.symbol} size={54} />
+              </StyledCardIcon>
+              <Label text={fromTokenName} variant="normal" />
+            </StyledToken>
+            <StyledExchangeArrow>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </StyledExchangeArrow>
+            <StyledToken>
+              <StyledCardIcon>
+                <TokenSymbol symbol={toToken.symbol} size={54} />
+              </StyledCardIcon>
+              <Label text={toTokenName} variant="normal" />
+            </StyledToken>
+          </StyledExchanger>
+          <StyledDesc>{priceDesc}</StyledDesc>
+          <StyledCardActions>
+            {approveStatus !== ApprovalState.APPROVED && !disabled ? (
+              <Button
+                color="primary"
+                variant="contained"
+                disabled={approveStatus === ApprovalState.PENDING || approveStatus === ApprovalState.UNKNOWN}
+                onClick={() => catchError(approve(), `Unable to approve ${fromTokenName}`)}
+              >
+                {`Approve ${fromTokenName}`}
+              </Button>
+            ) : (
+              <Button color="primary" variant="contained" onClick={onPresent} disabled={disabled}>
+                {disabledDescription || action}
+              </Button>
+            )}
+          </StyledCardActions>
+        </StyledCardContentInner>
+      </CardContent>
+    </Card>
   );
 };
 

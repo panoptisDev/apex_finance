@@ -1,14 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import AccountButton from '../../components/Nav/AccountButton';
-interface PageHeaderProps {
-  icon: React.ReactNode;
-  subtitle?: string;
-  title?: string;
+interface HeaderProps {
+
 }
 
-const Header: React.FC<PageHeaderProps> = ({ children }) => {
+const Header: React.FC<HeaderProps> = ({ children }) => {
   return (
     <div className="page-header">
         <nav className="navbar navbar-expand-lg d-flex justify-content-between">
@@ -21,9 +18,7 @@ const Header: React.FC<PageHeaderProps> = ({ children }) => {
           </div>
           <div className="flex-fill" id="headerNav">
             <ul className="navbar-nav">
-              <li className="nav-item d-md-block d-lg-none">
-                <a className="nav-link" href="#" id="toggle-search"><i data-feather="search"></i></a>
-              </li>
+            
               <li className="nav-item">
                 <AccountButton text="Connect" />
               </li>

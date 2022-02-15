@@ -11,16 +11,12 @@ interface ExchangeStatProps {
 
 const ExchangeStat: React.FC<ExchangeStatProps> = ({ tokenName, description, price }) => {
   return (
-    <div className="col m-b-sm">
-      <ul className="list-group st-pricing-table card-bg">
-          <li className="list-group-item">
-              <h3 className="st-pricing-table-header fs-6">💰 {tokenName} = {price} FTM</h3>
-              <hr/>
-              <p>{description}
-              </p>
-          </li>
-      </ul>
-    </div>
+    <Card>
+      <StyledCardContentInner>
+        <StyledCardTitle>{`💰 ${tokenName} = ${price} FTM`}</StyledCardTitle>
+        <StyledDesc>{description}</StyledDesc>
+      </StyledCardContentInner>
+    </Card>
   );
 };
 

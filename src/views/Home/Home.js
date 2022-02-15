@@ -147,7 +147,7 @@ const Home = () => {
       {/* <BackgroundImage /> */}
       <div className="main-wrapper">
         <div className="row">
-          <div className="col-lg-12">
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div className="card card-bg actions-widget text-center">
               <div className="card-body">
                 <div className="actions-widget-item">
@@ -193,7 +193,7 @@ const Home = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 col-lg-12 col-sm-12">
             <div className="card card-bg">
               <div className="card-body">
                 <h5 className="card-title">Apex Ecosystem Assets</h5>
